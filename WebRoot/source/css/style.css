@@ -1,0 +1,347 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*body开始*/
+.bd{
+    margin:0 auto;	
+    background:#fff;
+    width:1190px;
+    overflow:hidden;
+
+}
+
+.baer{
+    margin-top:10px;
+    margin-left:12px;
+    width:1166px;
+    height:435px;
+    background:#e5e5e6;
+}
+
+/*news begin*/
+.news{
+    margin-top:26px;
+    margin-left:12px;
+    width:1166px;
+    height:298px;
+    overflow: hidden;
+}
+.box1{
+    border:1px solid #d2d2d2;
+    width:377px;
+    height:295px;
+    float:left;
+
+
+}
+
+.box2{
+    border:1px solid #d2d2d2;
+    width:377px;
+    height:295px;
+    float:left;
+    margin-left:14px;
+
+}
+
+.box3{
+    border:1px solid #d2d2d2;
+    width:377px;
+    height:295px;
+    float:left;
+    margin-left:14px;
+}
+
+#tex{
+    clear:none;
+    width:338px;
+    height:208px;
+    margin-top:50px;
+}
+
+#tex p{
+    margin-top:18px;
+    color:#c0c0c0;
+
+}
+
+#tex ul li{
+    margin-top:20px;
+    margin-left:14px;
+    color:#6b6b6b;
+    line-height:10px;
+    list-style: url(../images/squ.png);
+
+}
+
+#news_logo{
+    margin:24px 0 0 26px;
+    overflow:hidden;
+
+}
+#news_logo img{	
+    width:42px;
+    height:42px;
+    float:left;
+}
+
+#news_logo span{
+    font-size:19px;
+    font-weight:bold;
+    color:#1a0099;
+    margin-left:18px;
+    margin-top:8px;
+    float:left;
+
+}
+/*news end*/
+
+/*talk begin*/
+.talk{
+    margin-top:15px;
+    margin-left:12px;
+    width:1164px;
+    height:245px;
+    border:1px solid #d2d2d2;
+    overflow:hidden;
+}
+
+.talk_top{
+
+    height:45px;
+}
+
+.talk_l span{
+    font-size:18px;
+    font-weight:bold;
+    color:#000;
+    margin-left:18px;
+    margin-top:8px;
+    float:left;
+}
+.talk_l img{
+    margin-left:15px;
+    margin-top:11px;
+    float:left;
+}
+.talk_r span{
+    font-size:18px;
+    font-weight:bold;
+    color:#000;
+    margin-right:189px;
+    margin-top:8px;
+    float:right;
+}
+.talk_r img{
+    margin-left:15px;
+    margin-top:11px;
+    margin-right:18px;
+    float:right;
+}
+
+.talk_foot{
+    height:205px;
+    margin-top:1px;/*content*/
+}
+
+#photo{
+    background:#7ecef4;
+    width:280px;
+    height:185px;
+    margin-left:14px;
+    float:left;
+}
+
+.talk_foot span{
+    float:left;
+    margin-left:10px;
+}
+
+.talk_foot p{
+    line-height:27px;
+    width:548px;
+    float:left;
+    height:148px;
+    overflow:hidden;
+
+}
+
+.talk_foot p1{
+    margin-left:472px;
+    color:#003398;	
+}
+
+#box_1 {
+    height:186px;
+    width:548px;
+    float:left;
+
+}
+
+#box_2 {
+    height:186px;
+    width:286px;
+    float:left;
+    float:right;
+
+}
+
+#box_l{
+    width:46px;
+    height:186px;	
+    float:left;
+
+}
+
+#box_r{
+    float:right;
+    width:230px;
+    height:186px;	
+
+}
+#box_r ul li{
+    list-style:none;
+    line-height:22px;
+    margin:12px;
+    margin-left:-5px;
+
+
+}
+
+#box_2 img{
+    margin-top:12px;
+
+}
+
+#box_2 p{
+    float:left;
+
+}
+/*talk end*/
+
+/*pic begin*/
+.pic{
+    margin-top:15px;
+    margin-left:12px;
+    width:1164px;
+    height:388px;
+    border:1px solid #d2d2d2;
+    overflow:hidden;
+}
+
+.pic_top span{
+    font-size:18px;
+    font-weight:bold;
+    color:#000;
+    margin-left:18px;
+    margin-top:8px;
+    float:left;
+}
+.pic_top img{
+    margin-left:15px;
+    margin-top:11px;
+    float:left;
+}
+
+
+.pic_foot{
+    margin-top:52px;
+    margin-left:16px;
+    height:316px;
+    width:1140px;
+
+}
+
+
+.box_pic1{
+    background:#7ecef4;
+    float:left;
+    width:224px;
+    height:316px;	
+
+}
+
+
+.box_pic2_1{
+    background:#7ecef4;
+    float:left;
+    width:224px;
+    height:153px;	
+    margin-left:7px;
+
+}
+
+.box_pic2_2{
+    background:#7ecef4;
+    float:left;
+    width:224px;
+    height:153px;	
+    margin-left:7px;
+
+}
+
+.box_pic2_3{
+    background:#7ecef4;
+    margin-top:10px;
+    float:left;
+    width:224px;
+    height:153px;
+    margin-left:7px;	
+
+
+}
+
+.box_pic2_4{
+    margin-top:10px;
+    background:#7ecef4;
+    width:224px;
+    height:153px;	
+    float:left;
+    margin-left:7px;
+}
+
+.box_pic2{
+    float:left;
+    width:462px;
+    height:315px;
+
+}
+
+.box_pic3{
+    float:left;	
+    width:441px;
+    height:316px;
+    margin-left:9px;
+    background:#7ecef4;
+
+}
+/*pic end*/
+
+/*link begin*/
+.link{
+    margin:15px 0 10px 12px;
+    width:1164px;
+    height:83px;
+    border:1px solid #d2d2d2;
+    overflow:hidden;
+}
+
+.link_top span{
+    font-size:18px;
+    font-weight:bold;
+    color:#000;
+    margin-left:18px;
+    margin-top:8px;
+    float:left;
+}
+.link_top img{
+    margin-left:15px;
+    margin-top:11px;
+    float:left;
+}
+
+/*link end*/
+
+
+/*body结束*/
+

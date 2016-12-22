@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.multipart.saveDir" value="/tmp"/>
+	<package name="itclub" namespace="/" extends="struts-default">
+		<interceptors>
+			<!-- 验证用户登录的拦截器 -->
+			<interceptor name="loginInterceptor" class="UserLoginInterceptor" />
+			<!-- 获得基本设置列表 -->
+			<interceptor name="indexInterceptor" class="IndexInterceptor" />
+			<interceptor-stack name="adminDefaultStack">
+				
+				<interceptor-ref name="indexInterceptor" />
+				<interceptor-ref name="loginInterceptor" />
+				
+				<interceptor-ref name="defaultStack" />
+				
+			</interceptor-stack>
+			<interceptor-stack name="indexDefaultStack">
+				<interceptor-ref name="indexInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+			<result name="login">/WEB-INF/pages/admin/login.jsp</result>
+			<result name="auto_login" type="redirect">
+				member_auto_login
+			</result>
+		</global-results>
+		
+	</package>
+	<package name="index" namespace="/" extends="itclub">
+	
+		<default-interceptor-ref name="indexDefaultStack" />
+		<action name="fileAction" class="UploadUtilAction" method="uploadFile">
+   			<result  type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+        </action>
+		<action name="index" class="IndexAction">
+			<result name="success">/WEB-INF/pages/index.jsp</result>
+		</action>
+		<action name="member_*" method="{1}" class="defaultMemberAction">
+			<result name="login">
+				/WEB-INF/pages/member/login.jsp
+			</result>
+			<result name="login_success" type="redirect">
+				index
+			</result>
+			<result name="regist">
+				/WEB-INF/pages/member/regist.jsp
+			</result>
+			<result name="regist_success" type="redirect">
+				member_login
+			</result>
+			<result name="signout" type="redirect">
+				index
+			</result>
+			<result name="invite">
+				/WEB-INF/pages/member/invite.jsp
+			</result>
+
+		</action>
+		<action name="check" class="com.itclub.javaee.action.CheckAction">
+			<result name="checkMember" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- 产生随机验证码 -->
+		<action name="CheckCode" class="CheckCodeUtilAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">imageStream</param>
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+
+
+		<action name="SpecialTopic_*" method="{1}"
+			class="com.itclub.javaee.action.SpecialTopicAction">
+			<result name="RecruitNewCommunity">
+				/WEB-INF/pages/SpecialTopic/{1}.jsp
+			</result>
+		</action>
+
+
+		<action name="forum" method=""
+			class="com.itclub.javaee.action.forum.IndexAction">
+			<result name="index">
+				/WEB-INF/pages/forum/index.jsp
+			</result>
+		</action>
+
+		<!-- 后台根 -->
+		<action name="admin" method="" class="adminIndexAction">
+			<!--<interceptor-ref name="adminDefaultStack" /> -->
+			<result>
+				/WEB-INF/pages/admin/login.jsp
+			</result>
+		</action>
+	</package>
+
+	<!-- 后台响应 -->
+	<package name="admin" namespace="/admin" extends="itclub">
+
+		<default-interceptor-ref name="adminDefaultStack" />
+		<action name="index" method="" class="adminIndexAction">
+			<result>/WEB-INF/pages/admin/index.jsp</result>
+		</action>
+		<action name="index_*" method="{1}" class="adminIndexAction">
+			<result name="top">/WEB-INF/pages/admin/{1}.jsp</result>
+			<result name="menu">/WEB-INF/pages/admin/{1}.jsp</result>
+			<result name="main">/WEB-INF/pages/admin/{1}.jsp</result>
+		</action>
+		<!-- 用户 -->
+		<action name="member_*" method="{1}" class="adminMemberAction">
+			<result name="invite">/WEB-INF/pages/admin/member/{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/admin/member/{1}.jsp</result>
+			<result name="add">/WEB-INF/pages/admin/member/{1}.jsp</result>
+			<result name="add_success">/WEB-INF/pages/admin/member/{1}.jsp</result>
+			<result name="edit_success">/WEB-INF/pages/admin/member/{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/admin/member/add.jsp</result>
+			<result name="login">/WEB-INF/pages/admin/index.jsp</result>
+			<result name="member_auto_login">/WEB-INF/pages/admin/index.jsp</result>
+			<result name="ajax" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 内容 -->
+		<action name="content_*" method="{1}" class="ContentAction">
+			<result name="article_list">/WEB-INF/pages/admin/content/{1}.jsp</result>
+		</action>
+		<action name="welcome" method="welcome" class="adminIndexAction">
+			<result>/WEB-INF/pages/admin/welcome.jsp</result>
+		</action>
+		<action name="admin_login" method="login" class="adminMemberAction">
+		<!--  <interceptor-ref name="cookie">
+                     <param name="cookiesName">ITCLUB_AUTO_TOKEN</param>
+                     <param name="cookiesValue">*</param>
+                 </interceptor-ref>-->
+			<result type="redirect">
+				index
+			</result>
+			<result name="input" type="redirect">
+				admin_login
+			</result>
+		</action>
+		<action name="system_*" method="{1}" class="SystemAction">
+			<result name="category" >/WEB-INF/pages/admin/system/{1}.jsp</result>
+			<result name="category_add">/WEB-INF/pages/admin/system/{1}.jsp</result>
+			<result name="category_add_success">/WEB-INF/pages/admin/system/{1}.jsp</result>
+		</action>
+	</package>
+</struts>    
+

@@ -1,0 +1,14 @@
+/*foot begin*/
+.foot{
+    height:191px;
+    background:#2d3236;	
+    overflow:hidden;
+}
+
+.foot_center{
+    margin:34px auto;
+    background:url(../images/foot.png);
+    width:1190px;	
+    height:128px;
+}
+/*foot end*/

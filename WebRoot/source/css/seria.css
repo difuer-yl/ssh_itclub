@@ -1,0 +1,405 @@
+/* Seria - jQuery Slideshow Plugin 
+
+=============================================
+
+# dimentions
+# general
+# photo covers
+# navigation
+# pagination
+# expand button
+# logic
+# mobile and tablets
+# retina icons
+
+*/
+
+
+/* dimentions (this you may want to change) */
+
+.seria { height: 500px; max-width: 1166px; /* photos max width */ }
+.seria-about { width: 35%; }
+
+.seria-cover-top, 
+.seria-cover-bottom,
+.seria-navigation,
+.seria-expand { margin-left: 35%; }
+
+
+/* general */
+
+.seria {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.seria-list {
+	position: relative;
+	top: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.seria-list .seria-item {
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+.seria-about {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-top: 20px;
+	padding: 0 40px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.seria-photo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	overflow: hidden;
+	background: url(../images/seria-preload.gif) no-repeat center;
+	background-color: #fff;
+}
+
+.seria-photo figure {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.seria-photo figcaption {
+	position: absolute;
+	padding: 1em;
+	right: 0;
+	bottom: 0;
+	color: #ddd;
+	line-height: normal;
+}
+
+.seria-photo img {
+	display: block;
+}
+
+.seria-landscape img {
+	width: 100%;
+	height: auto;
+}
+
+.seria-portrait img {
+	height: 100%;
+	width: auto;
+}
+
+.seria-mobile-about {
+	position: relative;
+	overflow: hidden;
+}
+
+.seria-mobile-about .seria-about {
+	margin: 0;
+	padding: 20px 0;
+	width: 100%;
+}
+
+.seria-panning-help {
+	display: none;
+	position: absolute;
+	top: 50%; left: 50%;
+	margin: -20px auto auto -20px;
+	width: 40px;
+	height: 40px;
+	background: url(../images/seria-controls.png) no-repeat -60px 0;
+	z-index: 100;
+}
+
+.seria a {
+	-webkit-transition: all .2s; 
+	-moz-transition: all .2s; 
+	-o-transition: all .2s; 
+	transition: all .2s;
+}
+
+/* photo covers */
+
+.seria-cover-top,
+.seria-cover-bottom {
+	position: absolute;
+	right: 0; 
+	left: 0;
+	background: #fff;
+	z-index: 100;
+}
+
+.seria-cover-top { top: 0; }
+.seria-cover-bottom { bottom: 0; }
+
+
+/* navigation */
+
+.seria-navigation {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	z-index: 150;
+}
+
+.seria-navigation a {
+	display: block;
+	padding: 8px;
+	margin-top: 10px;
+	background-color: #444;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	cursor: pointer;
+	outline: none;
+}
+
+.seria-navigation a:hover {
+	background-color: #06aeca;
+}
+
+.seria-navigation a span {
+	display: block;
+	width: 20px;
+	height: 20px;
+	text-indent: -9999px;
+}
+
+.seria-navigation a.seria-next span {
+	background: url(../images/seria-controls.png) no-repeat 0 -20px;
+}
+
+.seria-navigation a.seria-prev span {
+	background: url(../images/seria-controls.png) no-repeat 0 0;
+}
+
+.seria-first-item a.seria-prev,
+.seria-last-item a.seria-next {
+	opacity: 0.5;
+	cursor: default;
+	background-color: #444!important;
+}
+
+
+/* pagination */
+
+.seria-pagination {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	z-index: 150;
+}
+
+.seria-pagination li { 
+	margin-bottom: 4px;
+	position: relative; 
+	top: -50%;
+}
+
+.seria-pagination a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url(../images/seria-controls.png) no-repeat -20px 0;
+	text-indent: -9999px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition-property: opacity;
+	-moz-transition-property: opacity;
+	-o-transition-property: opacity;
+	transition-property: opacity;
+}
+
+.seria-pagination a:hover {
+	opacity: 1;
+}
+
+.seria-pagination .seria-current a {
+	background: url(../images/seria-controls.png) no-repeat -20px -20px;
+}
+
+
+/* expand button */
+
+.seria-expand {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 150;
+}
+
+.seria-expand a {
+	display: block;
+	padding: 8px;
+	background: #444;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	outline: none;
+	cursor: pointer;
+	opacity: 0.3;
+}
+
+.seria-expand a:hover {
+	opacity: 1;
+}
+
+.seria-expand a span {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url(../images/seria-controls.png) no-repeat -40px 0;
+	text-indent: -9999px;
+}
+
+.seria-expanded .seria-expand a span {
+	background: url(../images/seria-controls.png) no-repeat -40px -20px;
+}
+
+
+/* logic */
+
+.seria-about,
+.seria-mobile-about,
+.seria-photo figcaption {
+	display: none;
+}
+
+.seria-navigation,
+.seria-pagination,
+.seria-expand,
+.seria-cover-top,
+.seria-cover-bottom {
+	visibility: hidden;
+}
+
+.seria-ready .seria-navigation,
+.seria-ready .seria-pagination,
+.seria-ready .seria-expand,
+.seria-ready .seria-cover-top,
+.seria-ready .seria-cover-bottom {
+	visibility: visible;
+}
+
+.seria-expanded.seria-expand-style1 .seria-list { 
+	position: static; 
+	-webkit-transform: none!important;
+	-moz-transform: none!important;
+	-ms-transform: none!important;
+	-o-transform: none!important;
+	transform: none!important; }
+.seria-expanded.seria-expand-style1 .seria-current { 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	min-height: 100%; 
+	z-index: 50; }
+.seria-expanded.seria-expand-style1 .seria-photo { margin-left: 0!important; }
+.seria-expanded.seria-expand-style1 .seria-photo figcaption { 
+	display: block;
+	width: 100%;
+	text-align: right; 
+	background-color: #222;
+	background-color: rgba(0,0,0,0.3); }
+.seria-expanded.seria-expand-style1 .seria-expand { margin-top: 0!important; margin-left: 0!important; }
+.seria-expanded.seria-expand-style1 .seria-cover-top, 
+.seria-expanded.seria-expand-style1 .seria-cover-bottom,
+.seria-expanded.seria-expand-style1 .seria-pagination, 
+.seria-expanded.seria-expand-style1 .seria-navigation { display: none!important; }
+.seria-expanded.seria-expand-style1 .seria-photo.seria-panning { cursor: move; }
+
+.seria-expanded.seria-expand-style2 .seria-photo, 
+.seria-expanded.seria-expand-style2 .seria-cover-top, 
+.seria-expanded.seria-expand-style2 .seria-cover-bottom,
+.seria-expanded.seria-expand-style2 .seria-navigation,
+.seria-expanded.seria-expand-style2 .seria-expand { margin-left: 0; }
+.seria-expanded.seria-expand-style2 .seria-about { display: none!important; }
+.seria-expanded.seria-expand-style2 .seria-photo figcaption {
+	display: block;
+	-webkit-transition: opacity .3s; 
+	-moz-transition: opacity .3s; 
+	-o-transition: opacity .3s; 
+	transition: opacity .3s;
+	opacity: 0;
+	background-color: #222;
+	background-color: rgba(0,0,0,0.3); }
+.seria-expanded.seria-expand-style2 .seria-current .seria-photo figcaption { opacity: 1; }
+.seria-expanded.seria-expand-style2 .seria-photo.seria-panning { cursor: move; }
+
+
+/* mobile and tablets (for IE8 make sure you have https://github.com/scottjehl/Respond) */
+
+@media only screen and (max-width: 767px) {
+
+	.seria-mobile-about { display: block; }
+	.seria { height: 250px!important; }
+	.seria-photo { margin-left: 0; }
+	.seria-item .seria-about { display: none; }
+	.seria-cover-top, .seria-cover-bottom { display: none; }
+	.seria-navigation { margin: 0!important; }
+	.seria-expand { display: none; }
+
+}
+
+
+/* retina icons */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (min-resolution: 192dpi) {
+		
+		/* navigation */
+		.seria-navigation a.seria-next span {
+			background: url(../images/seria-controls@2x.png) no-repeat 0 -20px;
+			background-size: 100px 40px;
+		}
+		
+		.seria-navigation a.seria-prev span {
+			background: url(../images/seria-controls@2x.png) no-repeat 0 0;
+			background-size: 100px 40px;
+		}
+		
+		/* pagination */
+		.seria-pagination a { 
+			background: url(../images/seria-controls@2x.png) no-repeat -20px 0;
+			background-size: 100px 40px;
+		}
+		
+		.seria-pagination .seria-current a {
+			background: url(../images/seria-controls@2x.png) no-repeat -20px -20px;
+			background-size: 100px 40px;
+		}
+		
+		/* expand button */
+		.seria-expand a span {
+			background: url(../images/seria-controls@2x.png) no-repeat -40px 0;
+			background-size: 100px 40px;
+		}
+		
+		.seria-expanded .seria-expand a span {
+			background: url(../images/seria-controls@2x.png) no-repeat -40px -20px;
+			background-size: 100px 40px;
+		}
+		
+		/* panning help */
+		.seria-panning-help {
+			background: url(../images/seria-controls@2x.png) no-repeat -60px 0;
+			background-size: 100px 40px;
+		}
+
+}

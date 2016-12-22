@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="itclub" location="1645,878" size="170,70" />
+  <package name="index" location="1590,108" size="770,735">
+    <action name="index" location="66,268" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="member_*" location="556,76" size="150,146">
+      <result name="login">
+        <resourceEdge source="login" routing="0" target="login.jsp" />
+      </result>
+      <result name="login_success" />
+      <result name="regist">
+        <resourceEdge source="regist" routing="0" target="regist.jsp" />
+      </result>
+      <result name="regist_success" />
+      <result name="signout" />
+      <result name="invite">
+        <resourceEdge source="invite" routing="0" target="invite.jsp" />
+      </result>
+    </action>
+    <action name="check" location="556,338" size="150,41">
+      <result name="checkMember" />
+    </action>
+    <action name="CheckCode" location="311,338" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="SpecialTopic_*" location="311,443" size="150,41">
+      <result name="RecruitNewCommunity">
+        <resourceEdge source="RecruitNewCommunity" routing="0" target="{1}.jsp" />
+      </result>
+    </action>
+    <action name="forum" location="311,548" size="150,41">
+      <result name="index">
+        <resourceEdge source="index" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="admin" location="311,653" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="login.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="admin" location="225,843" size="1330,385">
+    <action name="index" location="1116,58" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="index_*" location="1116,212" size="150,83">
+      <result name="top">
+        <resourceEdge source="top" routing="0" target="{1}.jsp" />
+      </result>
+      <result name="menu">
+        <resourceEdge source="menu" routing="0" target="{1}.jsp" />
+      </result>
+      <result name="main">
+        <resourceEdge source="main" routing="0" target="{1}.jsp" />
+      </result>
+    </action>
+    <action name="member_*" location="66,160" size="150,188">
+      <result name="invite">
+        <resourceEdge source="invite" routing="0" target="{1}.jsp" />
+      </result>
+      <result name="list">
+        <resourceEdge source="list" routing="0" target="{1}.jsp" />
+      </result>
+      <result name="add">
+        <resourceEdge source="add" routing="0" target="{1}.jsp" />
+      </result>
+      <result name="add_success">
+        <resourceEdge source="add_success" routing="0" target="{1}.jsp" />
+      </result>
+      <result name="edit_success">
+        <resourceEdge source="edit_success" routing="0" target="{1}.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+      <result name="login">
+        <resourceEdge source="login" routing="0" target="index.jsp" />
+      </result>
+      <result name="ajax" />
+    </action>
+    <action name="welcome" location="241,58" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="welcome.jsp" />
+      </result>
+    </action>
+    <action name="admin_login" location="486,58" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="index.jsp" path="/WEB-INF/pages/index.jsp" location="1375,360" size="150,55" />
+  <webResource name="login.jsp" path="/WEB-INF/pages/member/login.jsp" location="2425,220" size="150,55" />
+  <webResource name="regist.jsp" path="/WEB-INF/pages/member/regist.jsp" location="2145,10" size="150,55" />
+  <webResource name="invite.jsp" path="/WEB-INF/pages/member/invite.jsp" location="1375,220" size="150,55" />
+  <webResource name="{1}.jsp" path="/WEB-INF/pages/SpecialTopic/{1}.jsp" location="2425,535" size="150,55" />
+  <webResource name="index.jsp" path="/WEB-INF/pages/forum/index.jsp" location="2425,640" size="150,55" />
+  <webResource name="login.jsp" path="/WEB-INF/pages/admin/login.jsp" location="1900,885" size="150,55" />
+  <webResource name="index.jsp" path="/WEB-INF/pages/admin/index.jsp" location="1340,675" size="150,55" />
+  <webResource name="{1}.jsp" path="/WEB-INF/pages/admin/{1}.jsp" location="1620,1060" size="150,55" />
+  <webResource name="{1}.jsp" path="/WEB-INF/pages/admin/member/{1}.jsp" location="990,745" size="150,55" />
+  <webResource name="add.jsp" path="/WEB-INF/pages/admin/member/add.jsp" location="10,1060" size="150,55" />
+  <webResource name="welcome.jsp" path="/WEB-INF/pages/admin/welcome.jsp" location="465,745" size="150,55" />
+</Struts2Diagram>
+

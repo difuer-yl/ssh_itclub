@@ -1,0 +1,22 @@
+
+/* slideshow 1 */	
+
+.ss1_wrapper { position:relative; width:1166px; height:435px; margin:0 0 20px 0; }
+.ss1_wrapper .slideshow { position:relative; width:1166px; height:435px; }
+
+.ss1_wrapper .slideshow_item { width:1166px; height:435px; }
+.ss1_wrapper .slideshow_item .data { display:none; }	
+
+.ss1_wrapper a.slideshow span { display:block; width:40px; height:46px; background:url(arrows.png) no-repeat -5px 50%; text-indent:-9999px; }
+
+.ss1_wrapper .slideshow_paging { position:absolute; bottom:10px; right:115px; z-index:11; font-size:12px; }
+.ss1_wrapper .slideshow_paging a { display:block; float:left; margin:0 0 0 2px; padding:4px 7px; color:#ccc; }
+.ss1_wrapper .slideshow_paging a:hover { color:#fff }
+.ss1_wrapper .slideshow_paging a.activeSlide { background:#eee; color:#222 }
+
+.ss1_wrapper .slideshow_box { position:absolute; right:0px; bottom:0; background:url(../images/trans-black-70.png); width:340px; height:435px; z-index:10; }
+.ss1_wrapper .slideshow_box .data { padding:20px;margin:10px; color:#ccc; width: 280px;height: 350px; }
+.ss1_wrapper .slideshow_box .data h4 { color:#fff; font:bold 18px arial, sans-serif;padding: inherit;margin: 20px 0; font-size:18px; }
+.ss1_wrapper .slideshow_box .data p { padding:0; margin:0; line-height:140%;font-size:12px;}
+.ss1_wrapper .slideshow_box .data .right { text-align: right;padding-right: 5px;}
+.ss1_wrapper .slideshow_box .data a { color:#fff; }
