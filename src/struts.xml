@@ -2,6 +2,7 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 <constant name="struts.multipart.saveDir" value="/tmp"/>
+<constant name="struts.i18n.encoding" value="UTF-8" />
 	<package name="itclub" namespace="/" extends="struts-default">
 		<interceptors>
 			<!-- 验证用户登录的拦截器 -->
@@ -153,6 +154,13 @@
 			<result name="category" >/WEB-INF/pages/admin/system/{1}.jsp</result>
 			<result name="category_add">/WEB-INF/pages/admin/system/{1}.jsp</result>
 			<result name="category_add_success">/WEB-INF/pages/admin/system/{1}.jsp</result>
+			<result name="category_edit">/WEB-INF/pages/admin/system/{1}.jsp</result>
+			<result name="category_edit_success">/WEB-INF/pages/admin/system/{1}.jsp</result>
+			<result name="ajax" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="base">/WEB-INF/pages/admin/system/{1}.jsp</result>
 		</action>
 	</package>
 </struts>    

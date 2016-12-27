@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/itclub">
+		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/itclub?useUnicode=true&amp;characterEncoding=GBK">
 		</property>
 		<property name="user" value="root"></property>
 		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
@@ -27,6 +27,9 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">false</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!--<property name="Connection.useUnicode">true </property>   
+        connection.characterEncoding连接数据库时数据的传输字符集编码方式，最好设置为gbk，用gb2312有的字符不全  
+    <property name="connection.characterEncoding">gbk </property>      --> 
 			</props>
 		</property>
 		<property name="mappingResources">
@@ -56,7 +59,8 @@
 				<value>com/itclub/ssh/domain/AdminMenu.hbm.xml</value>
 				<value>
 					com/itclub/ssh/domain/MemberActionLog.hbm.xml
-				</value></list>
+				</value>
+				<value>com/itclub/ssh/domain/Friendlink.hbm.xml</value></list>
 		</property>
 	</bean>
 	<bean id="transactionManager"
@@ -76,12 +80,16 @@
 		<property name="memberService" ref="memberService" />
 	</bean>
 	<bean id="adminIndexAction" class="com.itclub.ssh.action.admin.IndexAction"></bean>
-	<bean id="IndexInterceptor" class="com.itclub.ssh.action.interceptor.IndexInterceptor"></bean>
+	<bean id="IndexInterceptor" class="com.itclub.ssh.action.interceptor.IndexInterceptor">
+		<property name="systemService" ref="systemService"></property>
+	</bean>
 	<bean id="UserLoginInterceptor" class="com.itclub.ssh.action.interceptor.UserLoginInterceptor">
 		<property name="memberService" ref="memberService" />
 	</bean>
 	<bean id="CheckCodeUtilAction" class="com.itclub.ssh.action.CheckCodeUtilAction"></bean>
-	<bean id="IndexAction" class="com.itclub.ssh.action.IndexAction"></bean>
+	<bean id="IndexAction" class="com.itclub.ssh.action.IndexAction">
+		<property name="indexService" ref="indexService"></property>
+	</bean>
 	<bean id="defaultMemberAction" class="com.itclub.ssh.action.MemberAction">
 		<property name="memberService" ref="memberService"></property>
 	</bean>
@@ -104,7 +112,9 @@
 	<bean id="contentService" class="com.itclub.ssh.service.impl.ContentServiceimpl">
 		<property name="contentDao" ref="contentDao"></property>
 	</bean>
-	
+	<bean id="indexService" class="com.itclub.ssh.service.impl.IndexServiceImpl">
+		<property name="indexDao" ref="indexDao"></property>
+	</bean>
 	 
 	<!-- dao配置 -->
 	<bean id="MemberDao" class="com.itclub.ssh.dao.impl.MemberDaoImpl">
@@ -114,6 +124,12 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="contentDao" class="com.itclub.ssh.dao.impl.ContentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="indexDao" class="com.itclub.ssh.dao.impl.IndexDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="nestedSets" class="com.itclub.ssh.util.NestedSets">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	

@@ -16,7 +16,7 @@
     <body>
         <article class="page-container">
             <center><s:actionmessage />
-                <a href="member_add" class="btn btn-primary radius" >继续添加</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary radius exit" value="退出" /></center>
+                <a href="system_category_add" class="btn btn-primary radius" >继续添加</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary radius exit" value="退出" /></center>
         </article>
 
         <!--_footer 作为公共模版分离出去--> 

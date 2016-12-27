@@ -29,7 +29,7 @@
 </head>
 <body>
 	<div class="page-container">
-		<form action="system_category_add_success" method="post" class="form form-horizontal" id="form-category-add">
+		<form action="system_category_edit_success" method="post" class="form form-horizontal" id="form-category-add">
 			<div id="tab-category" class="HuiTab">
 				<div class="">
 					<div class="row cl">
@@ -38,7 +38,7 @@
 						<div id="showImage"></div>-->
 						<label class="form-label col-xs-4 col-sm-3">
 							<span class="c-red">*</span>上级菜单：</label> 
-							<input hidden="hidden" id="parent_id" name="parentId" value="0" />
+							<input hidden="hidden" id="parent_id" name="parentId" value="${menu.id }" />
 						<div class="formControls col-xs-8 col-sm-9">
 							<span class="select-box"> 
 							<select class="select" id="sel_Sub" name="" onchange="setParentId(this)">
@@ -49,9 +49,6 @@
 												${category.name}</option>
 										</s:iterator>
 									</s:if>
-									<!--  <option value="102">&nbsp;&nbsp;├ 分类二级</option>
-									<option value="20">分类一级</option>
-									<option value="200">&nbsp;&nbsp;├ 分类二级</option> -->
 							</select>
 							</span>
 						</div>
@@ -61,7 +58,7 @@
 						<label class="form-label col-xs-4 col-sm-3"><span
 							class="c-red">*</span>菜单名称：</label>
 						<div class="formControls col-xs-8 col-sm-9">
-							<input type="text" class="input-text" value="" placeholder=""
+							<input type="text" class="input-text" value="${menu.name }" placeholder=""
 								id="" name="name" datatype="*2-16" nullmsg="用户名不能为空" />
 						</div>
 						<div class="col-3"></div>
@@ -69,7 +66,7 @@
 					<div class="row cl">
 						<label class="form-label col-xs-4 col-sm-3">图标：</label>
 						<div class="formControls col-xs-8 col-sm-9">
-							<input type="text" class="input-text" value="" placeholder=""
+							<input type="text" class="input-text" value="${menu.icon }" placeholder=""
 								id="" name="icon" />
 						</div>
 						<div class="col-3"></div>
@@ -77,7 +74,7 @@
 					<div class="row cl">
 						<label class="form-label col-xs-4 col-sm-3">路径：</label>
 						<div class="formControls col-xs-8 col-sm-9">
-							<input type="text" class="input-text" value="" placeholder=""
+							<input type="text" class="input-text" value="${menu.path }" placeholder=""
 								id="" name="path">
 						</div>
 						<div class="col-3"></div>

@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -11,6 +13,7 @@
         <aside class="Hui-aside">
             <input runat="server" id="divScrollValue" type="hidden" value="" />
             <div class="menu_dropdown bk_2">
+            	
                 <dl id="menu-article">
                     <dt><i class="Hui-iconfont">&#xe616;</i> 内容管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                     <dd>
@@ -96,6 +99,40 @@
                         </ul>
                     </dd>
                 </dl>
+                <s:iterator id="menu" value="menus">
+                	<s:property value="#menu.level" />
+                	<c:choose>
+                		<c:when test="#menu.level==1">
+                		<dl id="menu-system">
+                    <dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+                    <dd>
+                        <ul>
+                        <s:iterator id="menu" value="menus">
+                        <s:if test="#menu.level==2">
+                            <li><a _href="system_base" data-title="系统设置" href="javascript:void(0)">系统设置</a></li></s:if>
+                            </s:iterator>
+                            <li><a _href="system_category" data-title="栏目管理" href="javascript:void(0)">栏目管理</a></li>
+                            <li><a _href="system_data" data-title="数据字典" href="javascript:void(0)">数据字典</a></li>
+                            <li><a _href="system_shielding" data-title="屏蔽词" href="javascript:void(0)">屏蔽词</a></li>
+                            <li><a _href="system_log" data-title="系统日志" href="javascript:void(0)">系统日志</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                		</c:when>
+                	</c:choose>
+                	<dl id="menu-system">
+                    <dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+                    <dd>
+                        <ul>
+                            <li><a _href="system_base" data-title="系统设置" href="javascript:void(0)">系统设置</a></li>
+                            <li><a _href="system_category" data-title="栏目管理" href="javascript:void(0)">栏目管理</a></li>
+                            <li><a _href="system_data" data-title="数据字典" href="javascript:void(0)">数据字典</a></li>
+                            <li><a _href="system_shielding" data-title="屏蔽词" href="javascript:void(0)">屏蔽词</a></li>
+                            <li><a _href="system_log" data-title="系统日志" href="javascript:void(0)">系统日志</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                </s:iterator>
             </div>
         </aside>
     </body>
