@@ -88,7 +88,6 @@ $(function(){
 function member_huanyuan(obj,id){
 	layer.confirm('确认要恢复吗？',function(index){
 		$.ajax({url: "member_restore?id=" + id, success: function (result) {
-                            alert(result);
                             if (result) {
                                 $(obj).parents("tr").remove();
                                 layer.msg('恢复成功!', {icon: 1, time: 1000});

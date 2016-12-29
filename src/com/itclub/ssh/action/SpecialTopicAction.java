@@ -1,4 +1,4 @@
-package com.itclub.javaee.action;
+package com.itclub.ssh.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 

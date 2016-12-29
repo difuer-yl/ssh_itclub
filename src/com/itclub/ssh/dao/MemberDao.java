@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.itclub.ssh.domain.AdminGroup;
 import com.itclub.ssh.domain.AdminMember;
+import com.itclub.ssh.domain.Invitation;
 import com.itclub.ssh.domain.Member;
 import com.itclub.ssh.domain.MemberActionLog;
 
@@ -29,6 +30,16 @@ public interface MemberDao {
 
 
 	void saveLog(MemberActionLog memberActionLog);
+
+	Invitation findInvitationCode(String invitationCode);
+
+	void saveMember(Member member);
+
+	void deleteInvitation(Invitation invitation);
+
+	void saveInvite(Invitation ii);
+
+	List findAllInvitation();
 
 
 	

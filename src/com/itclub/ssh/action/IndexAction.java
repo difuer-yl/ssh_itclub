@@ -32,7 +32,6 @@ public class IndexAction extends ActionSupport {
 	public String execute() throws Exception {
 		//friendlinks=indexService.getFriendlinks();
 		List list =indexService.getFriendlinks();
-		System.out.println(list.size());
 		setFriendlinks(list);
 		return SUCCESS;
 	}

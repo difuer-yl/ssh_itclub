@@ -14,6 +14,7 @@ import javax.servlet.http.Cookie;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.itclub.ssh.domain.Invitation;
 import com.itclub.ssh.domain.Member;
 import com.itclub.ssh.service.MemberService;
 import com.opensymphony.xwork2.ActionContext;
@@ -48,6 +49,16 @@ public class MemberAction extends ActionSupport implements ModelDriven<Member> {
 	public void setMemberService(MemberService memberService) {
 		this.memberService = memberService;
 	}
+	private String num;
+	public void setNum(String num) {
+		this.num = num;
+	}
+	
+	private List<Invitation> invitations=new ArrayList<>();
+
+	public void setInvitations(List<Invitation> invitations) {
+		this.invitations = invitations;
+	}
 
 	/**
 	 * 邀请码
@@ -55,7 +66,7 @@ public class MemberAction extends ActionSupport implements ModelDriven<Member> {
 	 * @return
 	 */
 	public String invite() {
-
+		setInvitations(memberService.getAllInvitation());
 		return "invite";
 	}
 
@@ -65,8 +76,7 @@ public class MemberAction extends ActionSupport implements ModelDriven<Member> {
 	 * @return
 	 */
 	public String inviteAdd() {
-		InvitationDao itDao = new InvitationDaoImpl();
-		itDao.add(1);
+		memberService.addInvite(num);
 		return "invite";
 	}
 
@@ -105,7 +115,7 @@ public class MemberAction extends ActionSupport implements ModelDriven<Member> {
 	 * @return
 	 */
 	public String add_success() {
-		boolean b = memberDao.regist(member, 0, false);
+		boolean b = memberService.regist(member, null, false);
 		String ms;
 		if (b) {
 			ms = ("添加成功！");
@@ -159,10 +169,9 @@ public class MemberAction extends ActionSupport implements ModelDriven<Member> {
 	 * 
 	 * @return
 	 */
-	public String Restore() {
-		String id = req.getParameter("id");
-		inputStream = new StringBufferInputStream(String.valueOf(memberDao
-				.changeStatus(Integer.valueOf(id), true)));
+	public String restore() {
+		inputStream = new StringBufferInputStream(memberService
+				.changeStatus(member.getId(), true));
 		return "ajax";
 	}
 

@@ -307,7 +307,8 @@
 
 			<div class="box_pic2">
 
-				<div class="box_pic2_1"></div>
+				<div class="box_pic2_1">
+				</div>
 
 				<div class="box_pic2_2"></div>
 
@@ -317,7 +318,16 @@
 
 			</div>
 
-			<div class="box_pic3"></div>
+			<div class="box_pic3"><script src='https://git.oschina.net/difuer/ssh_itclub/widget_preview'></script>
+
+<style>
+.pro_name a{color: #4183c4;}
+.osc_git_title{background-color: #d8e5f1;}
+.osc_git_box{background-color: #fafafa;}
+.osc_git_box{border-color: #ddd;}
+.osc_git_info{color: #666;}
+.osc_git_main a{color: #030303;}
+</style></div>
 
 
 		</div>

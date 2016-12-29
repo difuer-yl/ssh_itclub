@@ -8,6 +8,7 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import com.itclub.ssh.dao.MemberDao;
 import com.itclub.ssh.domain.AdminGroup;
 import com.itclub.ssh.domain.AdminMember;
+import com.itclub.ssh.domain.Invitation;
 import com.itclub.ssh.domain.Member;
 import com.itclub.ssh.domain.MemberActionLog;
 
@@ -97,6 +98,38 @@ public class MemberDaoImpl extends HibernateDaoSupport implements MemberDao {
 		
 		getHibernateTemplate().save(memberActionLog);
 		
+	}
+
+	@Override
+	public Invitation findInvitationCode(String invitationCode) {
+		List list=getHibernateTemplate().find("select id from Invitation where code=?", invitationCode);
+		return (Invitation) list.get(0);
+	}
+
+	@Override
+	public void saveMember(Member member) {
+		getHibernateTemplate().save(member);
+		
+	}
+
+	@Override
+	public void deleteInvitation(Invitation invitation) {
+		getHibernateTemplate().delete(invitation);
+		
+	}
+
+
+
+	@Override
+	public void saveInvite(Invitation ii) {
+		getHibernateTemplate().save(ii);
+		
+	}
+
+	@Override
+	public List findAllInvitation() {
+		List list=getHibernateTemplate().find("from Invitation");
+		return null;
 	}
 
 

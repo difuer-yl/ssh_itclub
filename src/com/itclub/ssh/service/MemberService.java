@@ -2,6 +2,7 @@ package com.itclub.ssh.service;
 
 import java.util.List;
 
+import com.itclub.ssh.domain.Invitation;
 import com.itclub.ssh.domain.Member;
 
 public interface MemberService {
@@ -22,5 +23,17 @@ public interface MemberService {
 	Member autoLogin(String m);
 
 	String UpdateToken(Member memberInfo);
+
+	Invitation getInvitationCode(String invitationCode);
+
+	boolean regist(Member member, Invitation invitation, boolean b);
+
+	boolean activateMember(String username, String code);
+
+	void addInvite(String num);
+
+	List<Invitation> getAllInvitation();
+
+	String changeStatus(Integer id, boolean b);
 
 }

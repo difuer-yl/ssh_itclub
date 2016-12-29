@@ -24,9 +24,7 @@
 		</interceptors>
 		<global-results>
 			<result name="login">/WEB-INF/pages/admin/login.jsp</result>
-			<result name="auto_login" type="redirect">
-				member_auto_login
-			</result>
+			<result name="auto_login" type="redirect">member_auto_login</result>
 		</global-results>
 		
 	</package>
@@ -43,24 +41,12 @@
 			<result name="success">/WEB-INF/pages/index.jsp</result>
 		</action>
 		<action name="member_*" method="{1}" class="defaultMemberAction">
-			<result name="login">
-				/WEB-INF/pages/member/login.jsp
-			</result>
-			<result name="login_success" type="redirect">
-				index
-			</result>
-			<result name="regist">
-				/WEB-INF/pages/member/regist.jsp
-			</result>
-			<result name="regist_success" type="redirect">
-				member_login
-			</result>
-			<result name="signout" type="redirect">
-				index
-			</result>
-			<result name="invite">
-				/WEB-INF/pages/member/invite.jsp
-			</result>
+			<result name="login">/WEB-INF/pages/member/login.jsp</result>
+			<result name="login_success" type="redirect">index</result>
+			<result name="regist">/WEB-INF/pages/member/regist.jsp</result>
+			<result name="regist_success" type="redirect">member_login</result>
+			<result name="signout" type="redirect">index</result>
+			<result name="activate">/WEB-INF/pages/member/activate_success.jsp</result>
 
 		</action>
 		<action name="check" class="com.itclub.javaee.action.CheckAction">
@@ -82,25 +68,19 @@
 
 		<action name="SpecialTopic_*" method="{1}"
 			class="com.itclub.javaee.action.SpecialTopicAction">
-			<result name="RecruitNewCommunity">
-				/WEB-INF/pages/SpecialTopic/{1}.jsp
-			</result>
+			<result name="RecruitNewCommunity">/WEB-INF/pages/SpecialTopic/{1}.jsp</result>
 		</action>
 
 
 		<action name="forum" method=""
 			class="com.itclub.javaee.action.forum.IndexAction">
-			<result name="index">
-				/WEB-INF/pages/forum/index.jsp
-			</result>
+			<result name="index">/WEB-INF/pages/forum/index.jsp</result>
 		</action>
 
 		<!-- 后台根 -->
 		<action name="admin" method="" class="adminIndexAction">
 			<!--<interceptor-ref name="adminDefaultStack" /> -->
-			<result>
-				/WEB-INF/pages/admin/login.jsp
-			</result>
+			<result>/WEB-INF/pages/admin/login.jsp</result>
 		</action>
 	</package>
 
@@ -130,6 +110,8 @@
 				<param name="contentType">text/html</param>
 				<param name="inputName">inputStream</param>
 			</result>
+			
+			<result name="invite">/WEB-INF/pages/admin/member/invite.jsp</result>
 		</action>
 		<!-- 内容 -->
 		<action name="content_*" method="{1}" class="ContentAction">

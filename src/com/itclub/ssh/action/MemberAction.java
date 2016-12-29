@@ -6,6 +6,9 @@
 package com.itclub.ssh.action;
 
 
+import java.io.InputStream;
+
+import com.itclub.ssh.domain.Invitation;
 import com.itclub.ssh.domain.Member;
 import com.itclub.ssh.service.MemberService;
 import com.opensymphony.xwork2.ActionContext;
@@ -32,6 +35,26 @@ public class MemberAction extends ActionSupport implements ModelDriven<Member> {
 	
 	public void setCheckcode(String checkcode) {
 		this.checkcode = checkcode;
+	}
+	private String invitationCode;
+	
+	public void setInvitationCode(String invitationCode) {
+		this.invitationCode = invitationCode;
+	}
+	private String agree;
+	public void setAgree(String agree) {
+		this.agree = agree;
+	}
+	
+	private String code;
+	
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+	private InputStream inputStream;
+	public void setInputStream(InputStream inputStream) {
+		this.inputStream = inputStream;
 	}
 	/**
      * 登录页
@@ -73,15 +96,9 @@ public class MemberAction extends ActionSupport implements ModelDriven<Member> {
      * @return 
      */
     public String regist_success() {
-        String checkcode = req.getParameter("checkcode");
-        String invitationCode = req.getParameter("invitationCode");
-        req.setAttribute("username", member.getUsername());
-        req.setAttribute("email", member.getEmail());
-        req.setAttribute("invitationCode", invitationCode);
-        int codestats = new InvitationDaoImpl().getStatusByCode(invitationCode);
-        if (codestats == 0) {
+    	Invitation invitation =memberService.getInvitationCode(invitationCode);
+        if (invitation == null) {
             this.addActionError("请输入正确的邀请码");
-            req.setAttribute("invitationCode", "");
             return "regist";
         }
         String r = (String) ActionContext.getContext().getSession().get("SESSION_SECURITY_CODE");
@@ -90,13 +107,12 @@ public class MemberAction extends ActionSupport implements ModelDriven<Member> {
 
             return "regist";
         }
-        String isAgree = req.getParameter("agree");
-        if (!"on".equalsIgnoreCase(isAgree)) {
+        if (!"on".equalsIgnoreCase(agree)) {
             this.addActionError("请同意用户协议");
             return "regist";
         }
-        System.out.println(isAgree);
-        if (memberDao.regist(member, codestats,true)) {
+        System.out.println(agree);
+        if (memberService.regist(member, invitation,true)) {
 
             return "regist_success";
         } else {
@@ -104,7 +120,8 @@ public class MemberAction extends ActionSupport implements ModelDriven<Member> {
             return "regist";
         }
     }
-    /**
+
+	/**
      * 邀请码
      * @return 
      */
@@ -123,7 +140,19 @@ public class MemberAction extends ActionSupport implements ModelDriven<Member> {
         ActionContext.getContext().getSession().remove("MEMBER_INFO");
         return "signout";
     }
-
+    
+    public String activate(){
+    	
+    	if(memberService.activateMember(member.getUsername(),code)){
+    		this.addActionMessage("激活成功！<a href='http://itclub.difuer.com:8080/member_login'>前去登录</a>");
+    	}else{
+    		this.addActionMessage("链接已失效！<a href='http://itclub.difuer.com:8080/member_login'>前去登录</a>");
+    	}
+    	
+    	return "activate";
+    }
+    
+    
     @Override
     public Member getModel() {
         return member;
